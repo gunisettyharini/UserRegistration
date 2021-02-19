@@ -12,7 +12,7 @@ public class UserRegistration {
 		// 91 followed by space followed by 10 digit number
 		System.out.println("Mobile Number: " + Pattern.matches("^[9][1][\s][6-9][0-9]{9}$", mobile));
 		// minimum 8 characters required
-		System.out.println("Password: " + Pattern.matches("^[a-zA-Z0-9]{8,}$", password));
+		System.out.println("Password: " + Pattern.matches("^(?=.*[A-Z])[a-zA-Z0-9]{8,}$", password));
 	}
 	public static void main(String[] args) {
 		System.out.println("Welcome to User Registration Program");
