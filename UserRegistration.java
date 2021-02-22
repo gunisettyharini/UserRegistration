@@ -1,32 +1,36 @@
-import java.util.Scanner;
+package com.userregistration;
+
 import java.util.regex.Pattern;
 
 public class UserRegistration {
-	static Scanner sc = new Scanner(System.in);
-	public static void validation(String firstName, String lastName, String email, String mobile, String password) {
-		// First Name and Last Name comes with restriction such as first letter should be upper case and with minimum 3 characters
-		System.out.println("First Name: " + Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", firstName));
-		System.out.println("Last Name: " + Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", lastName));
-	//  abc.xyz@bl.co.in is valid with abc bl and co are mandatory 2 optional(xyz,in) with precise @ and . positions 
-		System.out.println("E-Mail: " + Pattern.matches("^[a-z]{3,}([\.\+\-]?[0-9]{3,})?[@][a-z0-9]{1,}[.][a-z]{2,4}[,]?([.][a-z]{2,4}[.]?)?$", email));
-		// 91 followed by space followed by 10 digit number
-		System.out.println("Mobile Number: " + Pattern.matches("^[9][1][\s][6-9][0-9]{9}$", mobile));
-		// minimum 8 characters required
-		System.out.println("Password: " + Pattern.matches("^(?=.*[\\@\\#\\$\\%\\&\\_\\,\\.])(?=.*[A-Z])(?=.*[0-9]).{8,}$", password));
-	}
-	public static void main(String[] args) {
-		System.out.println("Welcome to User Registration Program");
-		System.out.println("Enter a valid first name");
-		String firstName = sc.nextLine();
-		System.out.println("Enter a valid last name");
-		String lastName = sc.nextLine();
-		System.out.println("Enter a valid email");
-		String email = sc.nextLine();
-		System.out.println("Enter a valid mobile number starting with 91 folowwed by a space and 10 didit number");
-		String mobile = sc.nextLine();
-		System.out.println("Enter a valid password with minimum 8 charcters");
-		String password = sc.nextLine();
-		validation(firstName, lastName, email, mobile, password);
-		
-	}
+
+    public boolean isFirstNamevalid(String firstName) {
+        return Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", firstName);
+    }
+    public boolean isLastNameValid(String lastName) {
+        return Pattern.matches("^[A-Z]{1}[a-zA-Z]{2,}$", lastName);
+    }
+    public boolean isEmailValid(String email) {
+        return Pattern.matches("^[a-zA-Z0-9]{3,}([\\.\\+\\-]?[a-zA-Z0-9]{3,})?[@][A-Za-z0-9]{1,}[.][A-Za-z]{2,4}[,]?([.][A-Za-z]{2,4}[.]?)?$", email);
+    }
+    public boolean isMobileNumberValid(String mobile) {
+        return Pattern.matches("^[9][1][\\s][6-9][0-9]{9}$", mobile);
+    }
+    public boolean isPasswordValid(String password) {
+        return Pattern.matches("^(?=.*[\\@\\#\\$\\%\\&\\_\\,\\.])(?=.*[A-Z])(?=.*[0-9])(?=.*[a-z]).{8,}$", password);
+    }
+    public static void main(String[] args) {
+        String firstName = "Amit";
+        String lastName = "Maharana";
+        String email = "abc.xyz@gmail.com";
+        String mobile = "91 8210029078";
+        String password = "Ahjgsd45@fj";
+        UserRegistration person = new UserRegistration();
+        person.isFirstNamevalid(firstName);
+        person.isLastNameValid(lastName);
+        person.isEmailValid(email);
+        person.isMobileNumberValid(mobile);
+        person.isPasswordValid(password);
+    }
 }
+
